@@ -5,15 +5,17 @@
   "dependencies": {
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^1.1.5"
   },
   "scripts": {
     "build": "concurrently \"npm run sass:build\" \"react-scripts build\"",
     "eject": "react-scripts eject",
     "sass:watch": "node-sass -w src -o src --output-style compressed --include-path src",
     "sass:build": "node-sass src -o src --output-style compressed --include-path src",
-    "start": "concurrently --kill-others \"npm run sass:watch\" \"react-scripts start\"",
-    "test": "react-scripts test --env=jsdom"
+    "start": "concurrently --kill-others \"npm run server\" \"npm run sass:watch\" \"react-scripts start\"",
+    "test": "react-scripts test --env=jsdom",
+    "server": "json-server --watch src/mockdata/api.json --port 3001"
   },
   "devDependencies": {
     "node-sass": "^4.9.3"
